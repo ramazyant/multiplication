@@ -16,14 +16,14 @@ int main() {
     std::vector<double> DaC_time;
     clock_t clck;
     double temp;
-    for (long i = 0; i < k; ++i) {
+    for (long i = 0; i < k; i += 10000) {
         temp = 0;
         Multiplicator::Number a(i + 1), b(i + 1);
         //std::cout << a << ' ' << b << std::endl;
         Multiplicator m;
         // timing GSD
-        clck = clock();
         for (int j = 0; j < NUMBER_ALG_APPLICATION; ++j) {
+            clck = clock();
             m.GSD(a, b);
             clck = clock() - clck;
             temp += ((double)clck)/CLOCKS_PER_SEC;
@@ -31,8 +31,8 @@ int main() {
         temp *= NUMBER_ALG_APPLICATION;
         GSD_time.push_back(temp);
         // timing DaC
-        clck = clock() - clck;
         for (int j = 0; j < NUMBER_ALG_APPLICATION; ++j) {
+            clck = clock();
             m.DaC(a, b);
             clck = clock() - clck;
             temp += ((double)clck)/CLOCKS_PER_SEC;
