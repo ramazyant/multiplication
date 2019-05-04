@@ -62,8 +62,11 @@ public:
             res.dig[i] += dig[i] + other[i];
             if (i == biggest - 1 && res[i] > 9) {
                 res.dig.resize(res.size() + 1);
+                res.dig[i + 1] += res[i] / 10;
             }
-            res.dig[i + 1] += res[i] / 10;
+            if (i < biggest - 1) {
+                res.dig[i + 1] += res[i] / 10;
+            }
             res.dig[i] %= 10;
         }
         return res;
