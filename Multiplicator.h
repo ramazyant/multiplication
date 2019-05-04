@@ -12,7 +12,7 @@ public:
     
     // grade school method - GSD
     
-    Number GSD (Number & oper1, Number & oper2) {
+    void GSD (Number & oper1, Number & oper2) {
         res.dig.clear();
         long shift = 0;
         for (long i = 0; i < oper1.size(); ++i, ++shift) {
@@ -30,42 +30,7 @@ public:
             res.dig[i + 1] += res.dig[i] / 10;
             res.dig[i] %= 10;
         }
-        return res;
     }
-    
-    /*
-    // Divide and Conquer - DaC
-#include <iostream>
-    Number DaC (Number & oper1, Number & oper2) {
-        if (oper1.size() == 1 || oper2.size()) {
-            //std::cout << oper1[0] << ' ' << oper2[0] << std::endl;
-            return oper1 * oper2;               // the base case
-        }
-        //
-        Number left1(oper1.size() / 2);
-        left1.Subnumber(oper1, oper1.size() / 2, oper1.size());
-        std::cout << left1.dig[0];
-        Number right1(oper1.size() / 2);
-        right1.Subnumber(oper1, 0, oper1.size() / 2);
-        Number left2(oper2.size() / 2);
-        left2.Subnumber(oper2, oper2.size() / 2, oper2.size());
-        Number right2(oper2.size() / 2);
-        right2.Subnumber(oper2, 0, oper2.size() / 2);
-        //
-        Number temp1 = left1 + right1;
-        Number temp2 = left2 + right2;
-        Number x1 = DaC(left1, left2);
-        Number x2 = DaC(temp1, temp2);
-        Number x3 = DaC(left2, right2);
-        x2 = x2 - x1;
-        x2 = x2 - x3;
-        //
-        long n = std::max(oper1.size(), oper2.size());
-        x1.Shift(n);
-        x2.Shift(n / 2);
-        return x1 + x2 + x3;
-    }
-     */
     
     // Divide and Conquer - DaC
     Number DaC (Number & oper1, Number & oper2) {
@@ -87,7 +52,7 @@ public:
             x2 = x2 - x1;
             x2 = x2 - x3;
             x1.Shift(n);
-            x2.Shift(n / 2);
+            x2.Shift(std::floor(n/2));
             x1 = x1 + x2;
             x1 = x1 + x3;
             return x1;
