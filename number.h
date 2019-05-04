@@ -84,8 +84,11 @@ public:
             res.dig[i] += dig[i] * mult;
             if (i == res.size() - 1 && res[i] > 9) {
                 res.dig.resize(res.size() + 1);
+                res.dig[i + 1] = res.dig[i] / 10;
             }
-            res.dig[i + 1] = res.dig[i] / 10;
+            if (i < res.size() - 1) {
+                res.dig[i + 1] += res[i] / 10;
+            }
             res.dig[i] %= 10;
         }
         return res;
