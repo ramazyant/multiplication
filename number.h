@@ -15,10 +15,10 @@ public:
             dig[i] = (std::rand() % 9) + 1;
         }
         /*
-        if (dig[volume - 1] == 0) {         // this gave a RE +_+
-            dig[volume - 1] = 1;
-        }
-        */
+         if (dig[volume - 1] == 0) {         // this gave a RE +_+
+         dig[volume - 1] = 1;
+         }
+         */
     }
     
     Number (long volume, int input) {
@@ -33,20 +33,20 @@ public:
     }
     
     /*
-    bool operator< (Number & other) {
-        if (size() == other.size()) {
-            for (long i = other.size() - 1; i >= 0; ++i) {
-                if (dig[i] < other.dig[i]) {
-                    return true;
-                } else if (dig[i] > other.dig[i]) {
-                    return false;
-                }
-            }
-        } else if (this -> size() < other.size()) {
-            return true;
-        }
-        return false;
-    }
+     bool operator< (Number & other) {
+     if (size() == other.size()) {
+     for (long i = other.size() - 1; i >= 0; ++i) {
+     if (dig[i] < other.dig[i]) {
+     return true;
+     } else if (dig[i] > other.dig[i]) {
+     return false;
+     }
+     }
+     } else if (this -> size() < other.size()) {
+     return true;
+     }
+     return false;
+     }
      */
     
     int operator [] (long index) {
@@ -97,13 +97,11 @@ public:
         return 0;
     }
     
-#include <iostream>
     void Subnumber (Number & other, long start, long end) {
-        for (long i = start; i <= end; ++i) {
-            this -> dig[i] = other.dig[i];
-            std::cout << this -> dig[i];
+        dig.clear();
+        for (long i = start; i < end; ++i) {
+            dig.push_back(other[i]);
         }
-        std::cout << std::endl;
     }
     
     void Shift (long shift) {
