@@ -26,17 +26,18 @@ int main() {
         for (int j = 0; j < NUMBER_ALG_APPLICATION; ++j) {
             m.GSD(a, b);
             clck = clock() - clck;
-            temp += ((double)clck)/(CLOCKS_PER_SEC * NUMBER_ALG_APPLICATION);
+            temp += ((double)clck)/CLOCKS_PER_SEC;
         }
+        temp *= NUMBER_ALG_APPLICATION;
         GSD_time.push_back(temp);
         // timing DaC
-        clck = clock();
+        clck = clock() - clck;
         for (int j = 0; j < NUMBER_ALG_APPLICATION; ++j) {
             m.DaC(a, b);
             clck = clock() - clck;
-            temp += ((double)clck)/(CLOCKS_PER_SEC * NUMBER_ALG_APPLICATION);
+            temp += ((double)clck)/CLOCKS_PER_SEC;
         }
-        //
+        temp *= NUMBER_ALG_APPLICATION;
         DaC_time.push_back(temp);
     }
     //
