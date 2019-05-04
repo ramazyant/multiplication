@@ -13,8 +13,7 @@ public:
     std::string algName2;
     
     CSVWriter(std::string filename, std::string delm = ",") :
-    fileName(filename), delimeter(delm), linesCount(0)
-    {}
+    fileName(filename), delimeter(delm), linesCount(0) {}
     
     template<typename T>
     void addDatainRow(T first1, T last1, T first2, T last2);
