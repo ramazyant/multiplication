@@ -17,3 +17,5 @@ for experiment in data["DaC"]:
     i += 1
 
 plt.show()
+
+plt.savefig('sketch.png')
